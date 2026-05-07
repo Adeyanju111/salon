@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Make.Sofia — Editorial Makeup Artist</title>
+  <!-- Google Fonts: geometric sans + refined body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons, circular social) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #FFFFFF;
+      color: #000000;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      font-weight: 300;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    /* container - luxury spacing */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+    }
+
+    /* thin dividers signature */
+    .divider-light {
+      width: 100%;
+      height: 1px;
+      background: #E6E6E6;
+      margin: 3rem 0;
+    }
+
+    .divider-thin {
+      width: 100%;
+      height: 1px;
+      background: #ECECEC;
+      margin: 2rem 0 2.5rem 0;
+    }
+
+    /* ===== HERO 2-COLUMN LAYOUT ===== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    /* left side: brand, nav, big heading */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* top bar: logo + nav inline */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #EFEFEF;
+      padding-bottom: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo {
+      font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #1A1A1A;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    /* main heading — massive editorial typography */
+    .hero-heading {
+      font-family: 'Montserrat', 'Futura', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      color: #000;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      font-weight: 350;
+      line-height: 1.5;
+      color: #2C2C2C;
+      max-width: 90%;
+      border-left: 2px solid #000;
+      padding-left: 1.2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #000000;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      width: fit-content;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary:hover {
+      background: #2C2C2C;
+    }
+
+    /* stats inside hero (horizontal row) */
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid #EAEAEA;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 400;
+      color: #5a5a5a;
+      margin-top: 0.3rem;
+    }
+
+    /* right side: large hero portrait (editorial) */
+    .hero-right {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.98) contrast(1.02);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    /* ===== STATISTICS SECTION (horizontal divider + bold proof) ===== */
+    .stats-section {
+      margin: 2rem 0 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .stats-section .stat-item {
+      text-align: left;
+    }
+
+    /* ===== PORTFOLIO MASONRY-STYLE GRID (modular, alternating) ===== */
+    .portfolio-title {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      color: #4F4F4F;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0 2rem;
+    }
+
+    /* each grid-item generic style */
+    .grid-item {
+      width: 100%;
+      transition: transform 0.2s ease;
+    }
+
+    .grid-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+      background: #F5F5F5;
+    }
+
+    /* text block styling (editorial quotes, minimal) */
+    .text-block {
+      background: transparent;
+      padding: 1.2rem 0 0.8rem 0;
+      border-top: 1px solid #EBEBEB;
+    }
+
+    .text-block h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: -0.2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-block p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      font-weight: 350;
+      color: #3A3A3A;
+    }
+
+    /* empty white space cell — pure breathing room */
+    .empty-space {
+      background: #FFFFFF;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* extra whitespace rhythm */
+    .grid-item.wide-breathing {
+      background: transparent;
+    }
+
+    /* Optional image aspect ratio variation for editorial feel */
+    .portrait-tall {
+      aspect-ratio: 3 / 4;
+    }
+    .landscape-break {
+      aspect-ratio: 4 / 3;
+    }
+
+    /* footer + circular social icons */
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid #E6E6E6;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .copyright {
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #000000;
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background: #3a3a3a;
+      transform: scale(0.96);
+    }
+
+    /* responsive design — mobile first refinement */
+    @media (max-width: 1000px) {
+      .container {
+        padding: 1.8rem 2rem;
+      }
+      .hero-grid {
+        gap: 2.5rem;
+      }
+      .portfolio-grid {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem 1.5rem;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-left {
+        order: 1;
+      }
+      .hero-right {
+        order: 0;
+      }
+      .hero-heading {
+        font-size: clamp(2.2rem, 8vw, 3.2rem);
+      }
+      .hero-description {
+        max-width: 100%;
+      }
+      .hero-stats {
+        gap: 1.2rem;
+      }
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+      .top-nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.5rem;
+      }
+      .stats-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* additional editorial finesse: image subtle zoom on hover */
+    .grid-img {
+      transition: transform 0.35s ease, filter 0.3s;
+      filter: brightness(0.99);
+    }
+    .grid-item:hover .grid-img {
+      transform: scale(1.01);
+      filter: brightness(1.01);
+    }
+    .hero-image {
+      transition: opacity 0.4s;
+    }
+    .hero-image:hover {
+      opacity: 0.97;
+    }
+
+    /* ensure thin & airy harmony */
+    section {
+      margin-bottom: 0rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO : two-column layout as per spec -->
+    <div class="hero-grid">
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <div class="top-nav">
+          <!-- dynamic brand name -->
+          <div class="logo" id="brandLogoPlaceholder">MAKE.SOFIA</div>
+          <div class="nav-links">
+            <a href="#">WORK</a>
+            <a href="#">SERVICES</a>
+            <a href="#">CONTACT</a>
+          </div>
+        </div>
+        <!-- Massive editorial heading with dynamic artist name -->
+        <h1 class="hero-heading">MAKE-UP ARTIST <span id="dynamicArtistHeading">SOFIA SMITH</span></h1>
+        <!-- Short luxury bio (brand mention will be dynamic too) -->
+        <div class="hero-description" id="dynamicBio">
+          Editorial & high-fashion beauty architect. Sculpting identity through light, shadow and refined pigment. NYC / global.
+        </div>
+        <!-- CTA BUTTON -->
+        <a href="#" class="btn-primary">BOOK CONSULTATION →</a>
+        <!-- STATS integrated inside hero-left -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">1500+</div>
+            <div class="stat-label">ELITE CLIENTS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">5★ REVIEWS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">WORKLOAD</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">80K</div>
+            <div class="stat-label">GLOBAL AUDIENCE</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN : large editorial portrait photography -->
+      <div class="hero-right">
+        <img class="hero-image" 
+             src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&auto=format" 
+             alt="Editorial makeup portrait - luxury beauty shot"
+             loading="eager">
+      </div>
+    </div>
+
+    <!-- thin divider -->
+    <div class="divider-light"></div>
+
+    <!-- BOLD STATISTICS SECTION (additional social proof) -->
+    <div class="stats-section">
+      <div class="stat-item">
+        <div class="stat-number">1500+</div>
+        <div class="stat-label">RUNWAY & EDITORIAL</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">400+</div>
+        <div class="stat-label">PRESS FEATURES</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">DEDICATED</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">80K</div>
+        <div class="stat-label">INSTAGRAM</div>
+      </div>
+    </div>
+
+    <div class="divider-thin"></div>
+
+    <!-- PORTFOLIO SECTION: modular masonry-style grid -->
+    <div class="portfolio-title">— editorialfolio —</div>
+    <div class="portfolio-grid">
+      
+      <!-- 1. Image block -->
+      <div class="grid-item">
+        <img class="grid-img" src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&auto=format" alt="close-up editorial makeup">
+      </div>
+      
+      <!-- 2. Text block with dynamic brand inside quote -->
+      <div class="grid-item text-block">
+        <h4>SCULPTURAL CHROMA</h4>
+        <p>High-contrast light & shadow. Avant-garde textures meet timeless sophistication.</p>
+        <div style="margin-top: 1.2rem; font-size: 0.7rem; letter-spacing: 1px;">— F/W 2025 —</div>
+      </div>
+      
+      <!-- 3. Image block -->
+      <div class="grid-item">
+        <img class="grid-img" src="https://images.unsplash.com/photo-1489424731084-a5f8b21929a8?w=800&auto=format" alt="editorial look dramatic makeup">
+      </div>
+      
+      <!-- 4. Text block – signature statement (dynamic brand name appears) -->
+      <div class="grid-item text-block" id="signatureTextBlock">
+        <h4>THE SIGNATURE</h4>
+        <p id="signatureQuote">"Make.Sofia – where skin becomes canvas. Editorial precision meets emotional depth."</p>
+        <p style="margin-top: 0.8rem; font-style: normal; font-weight: 300;">— Vogue Italia Feature —</p>
+      </div>
+      
+      <!-- 5. Image block -->
+      <div class="grid-item">
+        <img class="grid-img portrait-tall" src="https://images.unsplash.com/photo-1531746020798-e6953c6e28e4?w=800&auto=format" alt="luxury editorial close-up">
+      </div>
+      
+      <!-- 6. EMPTY WHITE SPACE (breathing) -->
+      <div class="grid-item empty-space"></div>
+      
+      <!-- 7. Image block -->
+      <div class="grid-item">
+        <img class="grid-img" src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=800&auto=format" alt="red lip editorial">
+      </div>
+      
+      <!-- 8. Text block: press recognition -->
+      <div class="grid-item text-block">
+        <h4>PRESS & RECOGNITION</h4>
+        <p>Featured in Harper's Bazaar, CR Fashion Book, and leading global campaigns. Luxury meets transformative artistry.</p>
+        <div style="border-top: 1px solid #EAEAEA; margin-top: 1rem; padding-top: 0.6rem; font-size: 0.7rem;">AWARD WINNER 2024</div>
+      </div>
+      
+      <!-- 9. Image block -->
+      <div class="grid-item">
+        <img class="grid-img" src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&auto=format" alt="smokey eye editorial">
+      </div>
+      
+      <!-- 10. Additional empty white space -->
+      <div class="grid-item empty-space"></div>
+      
+      <!-- 11. text block: ethos (dynamic brand mention) -->
+      <div class="grid-item text-block" id="ethosTextBlock">
+        <h4>ETHOS & EXCELLENCE</h4>
+        <p id="ethosQuote">Every face tells a story. My work translates identity into high-art makeup — from couture runways to iconic editorials.</p>
+      </div>
+      
+      <!-- 12. final image -->
+      <div class="grid-item">
+        <img class="grid-img landscape-break" src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=800&auto=format" alt="graphic liner beauty portfolio">
+      </div>
+      
+    </div>
+    <!-- subtle closing divider -->
+    <div class="divider-light"></div>
+
+    <!-- FOOTER with dynamic brand name in copyright -->
+    <div class="footer">
+      <div class="copyright" id="dynamicCopyright">© MAKE.SOFIA — ALL RIGHTS RESERVED — EST. 2020</div>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+    ============================================================
+    DYNAMIC BRAND & ARTIST NAME SYSTEM
+    ============================================================
+    You only need to edit the values below. The page will automatically
+    update the logo, artist name, signature quotes, copyright, and any
+    mention of the brand.
+  -->
+  <script>
+    (function() {
+      // ----------------------------------------------------------
+      // 🔽 EDIT THESE TWO VARIABLES TO CHANGE BRANDING GLOBALLY 🔽
+      // ----------------------------------------------------------
+      const BRAND_NAME = "Make.Sofia";       // Your brand name (e.g., "Make.Sofia", "LUA Beauty")
+      const ARTIST_NAME = "Sofia Smith";    // Artist / Makeup artist full name
+      // ----------------------------------------------------------
+
+      // Function that propagates the brand & artist name to every relevant spot
+      function updateGlobalBranding() {
+        // 1. Logo (top navbar)
+        const logoElement = document.getElementById('brandLogoPlaceholder');
+        if (logoElement) logoElement.innerText = BRAND_NAME.toUpperCase();
+
+        // 2. Hero heading artist name
+        const artistHeadingSpan = document.getElementById('dynamicArtistHeading');
+        if (artistHeadingSpan) artistHeadingSpan.innerText = ARTIST_NAME.toUpperCase();
+
+        // 3. Hero description might have brand related? Not needed by default, but we add optional elegance.
+        //    (keeping pure descriptive text; no forced brand there unless needed).
+        
+        // 4. Signature quote inside portfolio (text block "THE SIGNATURE")
+        const signatureQuoteP = document.getElementById('signatureQuote');
+        if (signatureQuoteP) {
+          // Replace the brand name placeholder in the quote
+          let originalText = signatureQuoteP.innerText;
+          // Use regex or replace: we look for any previous brand name (original "Make.Sofia")
+          // but we set it dynamically to current BRAND_NAME.
+          signatureQuoteP.innerText = `"${BRAND_NAME} – where skin becomes canvas. Editorial precision meets emotional depth."`;
+        }
+
+        // 5. Ethos text block: explicitly we could add brand mention only if needed.
+        //    The original line doesn't contain brand name, but user may want consistency. We keep it clean.
+        //    However if they want the brand to appear, we can optionally update.
+        //    For completeness, we ensure no brand missing; but according to original design we leave as is.
+        //    Additionally, the bio or any other static area with brand: none else.
+        
+        // 6. Copyright footer
+        const copyrightSpan = document.getElementById('dynamicCopyright');
+        if (copyrightSpan) {
+          // Format: © BRAND_NAME — ALL RIGHTS RESERVED — EST. 2020
+          copyrightSpan.innerText = `© ${BRAND_NAME.toUpperCase()} — ALL RIGHTS RESERVED — EST. 2020`;
+        }
+
+        // 7. Document title (browser tab) updates accordingly
+        document.title = `${BRAND_NAME} — Editorial Makeup Artist`;
+
+        // 8. (Optional) If any hidden additional mentions: we also update the hero description's potential brand usage? Not required.
+        //    But to be future-proof: we can look for any element with class "dynamic-brand" if needed. Not used currently.
+        //    Also attach a console log confirm.
+        
+        // 9. For the "ETHOS & EXCELLENCE" block we don't force brand to keep editorial purity, but you can uncomment next line if brand needed.
+        // const ethosP = document.getElementById('ethosQuote');
+        // if (ethosP && !ethosP.innerText.includes(BRAND_NAME)) {
+        //   ethosP.innerText = `${BRAND_NAME} elevates every face into art. ` + ethosP.innerText;
+        // }
+      }
+
+      // run on load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateGlobalBranding);
+      } else {
+        updateGlobalBranding();
+      }
+
+      // Expose a global function so you can change brand/artist on the fly without editing HTML
+      window.updateBrandIdentity = function(newBrand, newArtist) {
+        // Override the constants (by modifying closure scope not directly possible, but we reassign)
+        // We'll use a workaround: redefine but grab references.
+        // Actually for simplicity, we access the internal values via window.__brandConfig.
+        window.__brandConfig = { brand: newBrand, artist: newArtist };
+        // Update elements again using new values
+        if (newBrand !== undefined) {
+          const logoElem = document.getElementById('brandLogoPlaceholder');
+          if (logoElem) logoElem.innerText = newBrand.toUpperCase();
+          const copyElem = document.getElementById('dynamicCopyright');
+          if (copyElem) copyElem.innerText = `© ${newBrand.toUpperCase()} — ALL RIGHTS RESERVED — EST. 2020`;
+          const quoteElem = document.getElementById('signatureQuote');
+          if (quoteElem) quoteElem.innerText = `"${newBrand} – where skin becomes canvas. Editorial precision meets emotional depth."`;
+          document.title = `${newBrand} — Editorial Makeup Artist`;
+        }
+        if (newArtist !== undefined) {
+          const artistSpan = document.getElementById('dynamicArtistHeading');
+          if (artistSpan) artistSpan.innerText = newArtist.toUpperCase();
+        }
+        // Update original const-like behavior: we inform console
+        console.log(`Brand identity updated: Brand = ${newBrand || BRAND_NAME}, Artist = ${newArtist || ARTIST_NAME}`);
+      };
+
+      // Store initial values
+      window.__brandConfig = { brand: BRAND_NAME, artist: ARTIST_NAME };
+      
+      // Optional:  if user wants to call a function at top, they can use window.updateBrandIdentity('New Brand', 'New Artist')
+      console.log('✅ Dynamic branding active. Use window.updateBrandIdentity("NewBrand", "NewArtist") to update globally.');
+    })();
+  </script>
+</body>
+</html>
